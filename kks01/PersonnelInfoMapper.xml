@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.co.amiactive.mapper.kks01.PersonnelInfoMapper">
+
+    <select id="search" parameterType="string" resultType="jp.co.amiactive.dto.LoginUserData">
+        SELECT 
+            EMPLOYEE_CD as employeeCd, 
+            EMPLOYEES_LAST_NAME as employeesLastName, 
+            EMPLOYEES_FIRST_NAME as employeesFirstName 
+        FROM 
+            T_PERSONNEL_INFO 
+        WHERE 
+            EMPLOYEE_CD = #{employeeCd} 
+    </select>
+    
+    <select id="empSerch" parameterType="string" resultType="jp.co.amiactive.dto.PersonnelInfo">
+        SELECT
+            EMPLOYEE_CD as employeeCd
+        FROM
+            T_PERSONNEL_INFO
+        WHERE
+            DELETE_FLG = '0'
+            AND EMPLOYEE_CD = #{employeeCd}
+    </select>
+
+</mapper>
